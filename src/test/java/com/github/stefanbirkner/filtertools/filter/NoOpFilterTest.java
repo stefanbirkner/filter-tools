@@ -1,4 +1,4 @@
-package com.github.stefanbirkner.filtertools;
+package com.github.stefanbirkner.filtertools.filter;
 
 import org.junit.Test;
 
