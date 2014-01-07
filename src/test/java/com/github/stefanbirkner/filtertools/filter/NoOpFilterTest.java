@@ -13,10 +13,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class NoOpFilterTest {
-    final ServletRequest request = mock(ServletRequest.class);
-    final ServletResponse response = mock(ServletResponse.class);
-    final FilterChain filterChain = mock(FilterChain.class);
-    final NoOpFilter filter = new NoOpFilter();
+    private final ServletRequest request = mock(ServletRequest.class);
+    private final ServletResponse response = mock(ServletResponse.class);
+    private final FilterChain filterChain = mock(FilterChain.class);
+    private final NoOpFilter filter = new NoOpFilter();
 
     @Test
     public void callsTheFilterChainWithProvidedRequestAndResponse() throws Exception {

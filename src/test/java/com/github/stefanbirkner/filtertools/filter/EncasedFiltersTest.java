@@ -10,12 +10,12 @@ import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.*;
 
 public class EncasedFiltersTest {
-    final Filter firstFilter = mock(Filter.class);
-    final Filter secondFilter = mock(Filter.class);
-    final FilterConfig config = mock(FilterConfig.class);
-    final ServletRequest request = mock(ServletRequest.class);
-    final ServletResponse response = mock(ServletResponse.class);
-    final FilterChain filterChain = mock(FilterChain.class);
+    private final Filter firstFilter = mock(Filter.class);
+    private final Filter secondFilter = mock(Filter.class);
+    private final FilterConfig config = mock(FilterConfig.class);
+    private final ServletRequest request = mock(ServletRequest.class);
+    private final ServletResponse response = mock(ServletResponse.class);
+    private final FilterChain filterChain = mock(FilterChain.class);
 
     @Test
     public void callsFirstFilterWithProvidedRequestAndResponse() throws Exception {

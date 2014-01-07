@@ -15,11 +15,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class FilterWithFilterChainTest {
-    final Filter filter = mock(Filter.class);
-    final ServletRequest request = mock(ServletRequest.class);
-    final ServletResponse response = mock(ServletResponse.class);
-    final FilterChain baseFilterChain = mock(FilterChain.class);
-    private FilterWithFilterChain filterWithFilterChain = new FilterWithFilterChain(
+    private final Filter filter = mock(Filter.class);
+    private final ServletRequest request = mock(ServletRequest.class);
+    private final ServletResponse response = mock(ServletResponse.class);
+    private final FilterChain baseFilterChain = mock(FilterChain.class);
+    private final FilterWithFilterChain filterWithFilterChain = new FilterWithFilterChain(
             filter, baseFilterChain);
 
     @Rule

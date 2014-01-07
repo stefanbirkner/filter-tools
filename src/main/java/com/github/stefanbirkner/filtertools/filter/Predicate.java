@@ -9,6 +9,7 @@ package com.github.stefanbirkner.filtertools.filter;
 public interface Predicate<T> {
     /**
      * Evaluates the predicate on the given object.
+     *
      * @param object the input object
      * @return {@code} true if the object matches the predicate, otherwise {@link false}
      */
