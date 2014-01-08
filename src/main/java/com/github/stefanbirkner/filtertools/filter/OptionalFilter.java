@@ -1,11 +1,14 @@
 package com.github.stefanbirkner.filtertools.filter;
 
+import org.hamcrest.Matcher;
+
 import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * A wrapper for another filter that is optionally executed. You provide a {@link Predicate} that
- * specifies whether the base filter is executed or skipped.
+ * A wrapper for another filter that is optionally executed. You provide a {@link Predicate} or a
+ * Hamcrest {@link org.hamcrest.Matcher} that specifies whether the base filter is executed or
+ * skipped.
  *
  * <h3>Example</h3>
  * <p>Define a predicate and wrap the base filter.</p>
@@ -40,6 +43,18 @@ import java.io.IOException;
  *   }
  * }
  * </pre>
+ *
+ * <h3>Hamcrest Support</h3>
+ * <p>You can use Hamcrest {@link org.hamcrest.Matcher}s as predicates.</p>
+ * <pre>
+ * public class FrenchSomethingFilter extends OptionalFilter {
+ *   public FrenchSomethingFilter() {
+ *     super(
+ *       hasProperty("locale", equalTo(Locale.FRENCH)),
+ *       new SomethingFilter());
+ *   }
+ * }
+ * </pre>
  */
 public class OptionalFilter implements Filter {
     private final Predicate<? super ServletRequest> predicate;
@@ -52,6 +67,22 @@ public class OptionalFilter implements Filter {
         if (baseFilter == null)
             throw new NullPointerException("The base filter is missing.");
         this.baseFilter = baseFilter;
+    }
+
+    public OptionalFilter(Matcher<? super ServletRequest> matcher, Filter baseFilter) {
+        this(createPredicateForMatcher(matcher), baseFilter);
+    }
+
+    private static Predicate<ServletRequest> createPredicateForMatcher(
+            final Matcher<? super ServletRequest> matcher) {
+        if (matcher == null)
+            throw new NullPointerException("The matcher is missing.");
+        return new Predicate<ServletRequest>() {
+            @Override
+            public boolean test(ServletRequest request) {
+                return matcher.matches(request);
+            }
+        };
     }
 
     @Override
