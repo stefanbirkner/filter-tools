@@ -16,7 +16,7 @@ public class NoOpFilter implements Filter {
     }
 
     /**
-     * Does nothing but calling the filter filterchain with the provided request and response.
+     * Does nothing but calling the filterchain with the provided request and response.
      *
      * @throws java.io.IOException            if the filter chain throws an {@code IOException}.
      * @throws javax.servlet.ServletException if the filter chain throws an {@code ServletException}.
