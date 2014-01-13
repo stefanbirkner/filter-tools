@@ -11,7 +11,7 @@ public interface Predicate<T> {
      * Evaluates the predicate on the given object.
      *
      * @param object the input object
-     * @return {@code} true if the object matches the predicate, otherwise {@link false}
+     * @return {@code true} if the object matches the predicate, otherwise {@code false}
      */
     boolean test(T object);
 }

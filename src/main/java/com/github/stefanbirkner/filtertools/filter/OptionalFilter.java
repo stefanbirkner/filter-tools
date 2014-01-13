@@ -21,14 +21,14 @@ import java.io.IOException;
  * </pre>
  * <p>Add the filter to your web.xml.</p>
  * <pre>
- * &lt;filter>
- *   &lt;filter-name>FrenchSomethingFilter<&lt;/filter-name>
- *   &lt;filter-class>your.package.FrenchSomethingFilter<&lt;/filter-class>
- * &lt;/filter>
- * &lt;filter-mapping>
- *   &lt;filter-name>FrenchSomethingFilter<&lt;/filter-name>
- *   &lt;url-pattern>/*<&lt;/url-pattern>
- * &lt;/filter-mapping>
+ * &lt;filter&gt;
+ *   &lt;filter-name&gt;FrenchSomethingFilter&lt;/filter-name&gt;
+ *   &lt;filter-class&gt;your.package.FrenchSomethingFilter&lt;/filter-class&gt;
+ * &lt;/filter&gt;
+ * &lt;filter-mapping&gt;
+ *   &lt;filter-name&gt;FrenchSomethingFilter&lt;/filter-name&gt;
+ *   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ * &lt;/filter-mapping&gt;
  * </pre>
  * <p>You can provide init-params that will be dispatched to the base filter.</p>
  *
@@ -38,7 +38,7 @@ import java.io.IOException;
  * public class FrenchSomethingFilter extends OptionalFilter {
  *   public FrenchSomethingFilter() {
  *     super(
- *       (request) -> request.getLocale().equals(Locale.FRENCH),
+ *       (request) -&gt; request.getLocale().equals(Locale.FRENCH),
  *       new SomethingFilter());
  *   }
  * }
