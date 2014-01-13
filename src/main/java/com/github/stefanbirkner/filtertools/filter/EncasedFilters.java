@@ -10,6 +10,46 @@ import java.io.IOException;
  *
  * <p>This allows you to include multiple filters into your web.xml by including a single filter.
  * You can provide recommended filter combinations as a single filter, too.
+ *
+ * <h3>Example</h3>
+ * <p>The filter</p>
+ * <pre>
+ * public class MyEncasedFilters extends EncasedFilters {
+ *   public MyEncasedFilters() {
+ *     super(MyFirstFilter(), MySecondFilter());
+ *   }
+ * }
+ * </pre>
+ * <pre>
+ * &lt;filter&gt;
+ *   &lt;filter-name&gt;MyEncasedFilters&lt;/filter-name&gt;
+ *   &lt;filter-class&gt;my.package.MyEncasedFilters&lt;/filter-class&gt;
+ * &lt;/filter&gt;
+ * &lt;filter-mapping&gt;
+ *   &lt;filter-name&gt;MyEncasedFilters&lt;/filter-name&gt;
+ *   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ * &lt;/filter-mapping&gt;
+ * </pre>
+ *
+ * <p>is a replacement for</p>
+ * <pre>
+ * &lt;filter&gt;
+ *   &lt;filter-name&gt;MyFirstFilter&lt;/filter-name&gt;
+ *   &lt;filter-class&gt;my.package.MyFirstFilter&lt;/filter-class&gt;
+ * &lt;/filter&gt;
+ * &lt;filter&gt;
+ *   &lt;filter-name&gt;MySecondFilter&lt;/filter-name&gt;
+ *   &lt;filter-class&gt;my.package.MySecondFilter&lt;/filter-class&gt;
+ * &lt;/filter&gt;
+ * &lt;filter-mapping&gt;
+ *   &lt;filter-name&gt;MyFirstFilter&lt;/filter-name&gt;
+ *   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ * &lt;/filter-mapping&gt;
+ * &lt;filter-mapping&gt;
+ *   &lt;filter-name&gt;MySecondFilter&lt;/filter-name&gt;
+ *   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ * &lt;/filter-mapping&gt;
+ * </pre>
  */
 public class EncasedFilters implements Filter {
     private static final Filter NO_OP_FILTER = new NoOpFilter();
