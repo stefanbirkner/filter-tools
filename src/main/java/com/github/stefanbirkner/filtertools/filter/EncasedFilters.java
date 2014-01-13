@@ -6,7 +6,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * Encases multiple filters into a single filter.
+ * Encase multiple filters into a single filter.
  *
  * <p>This allows you to include multiple filters into your web.xml by including a single filter.
  * You can provide recommended filter combinations as a single filter, too.

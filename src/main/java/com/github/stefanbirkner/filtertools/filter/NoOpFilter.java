@@ -4,7 +4,8 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * This filter does nothing but calling the filter filterchain with the provided request and response.
+ * A null object for the {@link javax.servlet.Filter} interface. This filter does nothing but
+ * calling the filterchain with the provided request and response.
  */
 public class NoOpFilter implements Filter {
     /**
@@ -16,6 +17,9 @@ public class NoOpFilter implements Filter {
 
     /**
      * Does nothing but calling the filter filterchain with the provided request and response.
+     *
+     * @throws java.io.IOException            if the filter chain throws an {@code IOException}.
+     * @throws javax.servlet.ServletException if the filter chain throws an {@code ServletException}.
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)

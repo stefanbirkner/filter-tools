@@ -6,9 +6,8 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * A wrapper for another filter that is optionally executed. You provide a {@link Predicate} or a
- * Hamcrest {@link org.hamcrest.Matcher} that specifies whether the base filter is executed or
- * skipped.
+ * Combine a filter and a {@link Predicate} or Hamcrest {@link org.hamcrest.Matcher}. The filter is
+ * executed if the predicate or the matchers matches and skipped otherwise.
  *
  * <h3>Example</h3>
  * <p>Define a predicate and wrap the base filter.</p>

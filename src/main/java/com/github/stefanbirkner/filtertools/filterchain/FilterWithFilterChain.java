@@ -4,7 +4,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * Merges a {@link Filter} and a {@link FilterChain} into a new  {@code FilterChain}.
+ * Merge a {@link Filter} and a {@link FilterChain} into a new  {@code FilterChain}.
  *
  * <p>Calling {@link #doFilter(ServletRequest, ServletResponse)} on the
  * {@code FilterWithFilterChain} is like calling
