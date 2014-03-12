@@ -10,14 +10,14 @@
 </head>
 <body>
   {% include navbar.html %}
-  <div class="container">
-    <header>
-      <div class="jumbotron">
+  <header class="jumbotron">
+    <div class="container">
       <h1>{{ page.title }}</h1>
       <p>{{ page.description }}</p>
       <p><a class="btn btn-primary btn-lg" href="download.html">Get {{ page.title }}</a></p>
-      </div>
-    </header>
+    </div>
+  </header>
+  <div class="container">
     {{ content }}
   </div>
   {% include navbar-js.html %}
