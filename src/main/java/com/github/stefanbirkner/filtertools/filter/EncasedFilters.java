@@ -5,6 +5,8 @@ import com.github.stefanbirkner.filtertools.filterchain.FilterWithFilterChain;
 import javax.servlet.*;
 import java.io.IOException;
 
+import static java.util.Arrays.copyOfRange;
+
 /**
  * Encase multiple filters into a single filter.
  *
@@ -62,10 +64,7 @@ public class EncasedFilters implements Filter {
     }
 
     private Filter[] rest(Filter[] filters) {
-        Filter[] rest = new Filter[filters.length - 1];
-        for (int i = 0; i < rest.length; ++i)
-            rest[i] = filters[i + 1];
-        return rest;
+        return copyOfRange(filters, 1, filters.length);
     }
 
     @Override
