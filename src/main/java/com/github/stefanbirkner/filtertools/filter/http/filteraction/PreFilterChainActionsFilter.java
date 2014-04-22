@@ -18,6 +18,8 @@ public class PreFilterChainActionsFilter extends ActionsFilter {
      * Create a new filter.
      * {@link #doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)}
      * executes the actions in the same order as you provide it.
+     *
+     * @param actions a list of {@link com.github.stefanbirkner.filtertools.filter.http.filteraction.FilterAction}s
      */
     public PreFilterChainActionsFilter(FilterAction... actions) {
         super(actions);
