@@ -7,16 +7,48 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Does some action based on the request and/or the response. E.g.
- * <ul>
- * <li>Set request attributes.</li>
- * <li>Set a cookie.</li>
- * <li>Do some action that needs information from the request or response.</li>
- * </ul>
- * {@code FilterAction}s are designed to be used in a filter before or after the {@link javax.servlet.FilterChain} is
- * invoked. Filter tools itself provides the
- * {@link com.github.stefanbirkner.filtertools.filter.http.filteraction.PreFilterChainActionsFilter}
- * and the {@link com.github.stefanbirkner.filtertools.filter.http.filteraction.PostFilterChainActionsFilter}.
+ * {@code FilterAction}s are components of a frequently used type of {@link javax.servlet.Filter}s. Such filters do
+ * a piece of work before or after calling the {@link javax.servlet.FilterChain}, but never wrap the request or
+ * response. Examples are filters that set request attributes or cookies. This piece of works can be encapsulated by a
+ * {@code FilterAction}.
+ * <h2>Build a Filter Action</h2>
+ * <p>{@link #execute(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)} is an action's
+ * method that executes the desired piece of work. The action can be configured by
+ * {@link #init(javax.servlet.FilterConfig)} which is the equivalent to
+ * {@link javax.servlet.Filter#init(javax.servlet.FilterConfig)}. The {@link #destroy()} can be used to clean up
+ * resources. A simple filter action may look like this.
+ * <pre>
+ * public class YourAction implements FilterAction {
+ *   private YourService service;
+ *
+ *   public void init(FilterConfig config) throws ServletException {
+ *       String param = config.getInitParameter("your parameter");
+ *       service = new YourService(param);
+ *   }
+ *
+ *   public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+ *       request.setAttribute("your attribute", service.getNextValue());
+ *   }
+ *
+ *   public void destroy() {
+ *       service.shutdown();
+ *   }
+ * }
+ * </pre>
+ * <h2>Build a Filter with Filter Actions</h2>
+ * <p>Filter tools provides tow filter that are executing actions. The
+ * {@link com.github.stefanbirkner.filtertools.filter.http.filteraction.PreFilterChainActionsFilter} executes actions
+ * before it invokes the filter chain and
+ * the {@link com.github.stefanbirkner.filtertools.filter.http.filteraction.PostFilterChainActionsFilter} executes it
+ * afterwards. You use filter actions by creating your own filter that inherits one of the two filters. Look at this
+ * example:</p>
+ * <pre>
+ * public class YourFilter implements PreFilterChainActionsFilter {
+ *   public YourFilter() {
+ *       super(new FirstAction(), new SecondAction());
+ *   }
+ * }
+ * </pre>
  *
  * @since 1.2.0
  */
@@ -33,7 +65,7 @@ public interface FilterAction {
 
     /**
      * The {@code execute} method of the action is called by a filter before or after the
-     * {@link javax.servlet.FilterChain} is invoked dependeing on the filter itself.
+     * {@link javax.servlet.FilterChain} is invoked depending on the filter itself.
      *
      * @param request  an {@link javax.servlet.http.HttpServletRequest}
      * @param response an {@link javax.servlet.http.HttpServletResponse}
