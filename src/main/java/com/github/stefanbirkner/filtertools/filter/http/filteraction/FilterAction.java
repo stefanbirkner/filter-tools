@@ -50,6 +50,13 @@ import java.io.IOException;
  * }
  * </pre>
  *
+ * <h2>Select one of two Filter Actions</h2>
+ * <p>Filter tools provides a {@link com.github.stefanbirkner.filtertools.filter.http.filteraction.FilterActionSwitch}
+ * that selects one of two actions based on a {@link com.github.stefanbirkner.filtertools.filter.Predicate}</p>
+ * <pre>FilterAction actionSwitch = FilterActionSwitch.execute(new DoSomething())
+ *    .when(new APredicate())
+ *    .otherwiseExecute(new DoSomethingElse());</pre>
+ *
  * @since 1.2.0
  */
 public interface FilterAction {
