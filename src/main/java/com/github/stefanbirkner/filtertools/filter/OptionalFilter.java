@@ -73,7 +73,7 @@ public class OptionalFilter implements Filter {
     }
 
     private static Predicate<ServletRequest> createPredicateForMatcher(
-            final Matcher<? super ServletRequest> matcher) {
+        final Matcher<? super ServletRequest> matcher) {
         if (matcher == null)
             throw new NullPointerException("The matcher is missing.");
         return new Predicate<ServletRequest>() {
@@ -91,7 +91,7 @@ public class OptionalFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
-            throws IOException, ServletException {
+        throws IOException, ServletException {
         if (predicate.test(request))
             baseFilter.doFilter(request, response, filterChain);
         else

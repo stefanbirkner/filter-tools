@@ -20,7 +20,7 @@ public class FilterWithFilterChainTest {
     private final ServletResponse response = mock(ServletResponse.class);
     private final FilterChain baseFilterChain = mock(FilterChain.class);
     private final FilterWithFilterChain filterWithFilterChain = new FilterWithFilterChain(
-            filter, baseFilterChain);
+        filter, baseFilterChain);
 
     @Rule
     public final ExpectedException thrown = none();

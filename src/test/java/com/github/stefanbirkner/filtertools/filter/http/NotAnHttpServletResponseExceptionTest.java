@@ -17,7 +17,7 @@ public class NotAnHttpServletResponseExceptionTest {
     public void hasMeaningfulMessage() {
         NotAnHttpServletResponseException e = new NotAnHttpServletResponseException(new TestServletResponse());
         assertThat(e, hasProperty("message",
-                equalTo("The response dummy TestServletResponse is not a javax.servlet.http.HttpServletResponse, but a com.github.stefanbirkner.filtertools.filter.http.NotAnHttpServletResponseExceptionTest$TestServletResponse.")));
+            equalTo("The response dummy TestServletResponse is not a javax.servlet.http.HttpServletResponse, but a com.github.stefanbirkner.filtertools.filter.http.NotAnHttpServletResponseExceptionTest$TestServletResponse.")));
     }
 
     private static class TestServletResponse implements ServletResponse {

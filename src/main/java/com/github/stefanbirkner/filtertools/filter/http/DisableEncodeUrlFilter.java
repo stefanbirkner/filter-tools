@@ -23,7 +23,7 @@ import java.io.IOException;
 public class DisableEncodeUrlFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws IOException, ServletException {
+        throws IOException, ServletException {
         DisableEncodeUrlResponse disableEncodeUrlResponse = new DisableEncodeUrlResponse(response);
         filterChain.doFilter(request, disableEncodeUrlResponse);
     }

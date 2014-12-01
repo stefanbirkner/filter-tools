@@ -22,9 +22,9 @@ public class EncasedFiltersTest {
         EncasedFilters encasedFilters = new EncasedFilters(firstFilter);
         encasedFilters.doFilter(request, response, filterChain);
         verify(firstFilter).doFilter(
-                argThat(is(sameInstance(request))),
-                argThat(is(sameInstance(response))),
-                argThat(is(any(FilterChain.class))));
+            argThat(is(sameInstance(request))),
+            argThat(is(sameInstance(response))),
+            argThat(is(any(FilterChain.class))));
     }
 
     @Test

@@ -46,7 +46,7 @@ public abstract class ActionsFilter extends HttpFilter {
     }
 
     protected void executeAllFilterActions(HttpServletRequest request, HttpServletResponse response) throws IOException,
-            ServletException {
+        ServletException {
         for (FilterAction action : actions)
             action.execute(request, response);
     }

@@ -22,7 +22,7 @@ public class NoOpFilterTest {
     public void callsTheFilterChainWithProvidedRequestAndResponse() throws Exception {
         filter.doFilter(request, response, filterChain);
         verify(filterChain).doFilter(
-                argThat(is(sameInstance(request))),
-                argThat(is(sameInstance(response))));
+            argThat(is(sameInstance(request))),
+            argThat(is(sameInstance(response))));
     }
 }

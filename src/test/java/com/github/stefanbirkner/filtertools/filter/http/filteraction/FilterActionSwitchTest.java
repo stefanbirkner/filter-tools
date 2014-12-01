@@ -21,7 +21,7 @@ public class FilterActionSwitchTest {
     private final FilterAction actionForFailingTest = mock(FilterAction.class);
     private final Predicate<HttpServletRequest> predicate = mock(Predicate.class);
     private final FilterAction theSwitch
-            = execute(actionForSuccessfulTest).when(predicate).otherwiseExecute(actionForFailingTest);
+        = execute(actionForSuccessfulTest).when(predicate).otherwiseExecute(actionForFailingTest);
 
     @Rule
     public final ExpectedException thrown = none();

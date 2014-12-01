@@ -27,7 +27,7 @@ public class PreFilterChainActionsFilter extends ActionsFilter {
 
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws IOException, ServletException {
+        throws IOException, ServletException {
         executeAllFilterActions(request, response);
         filterChain.doFilter(request, response);
     }

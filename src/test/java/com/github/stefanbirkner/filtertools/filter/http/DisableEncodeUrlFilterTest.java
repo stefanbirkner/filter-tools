@@ -67,11 +67,11 @@ public class DisableEncodeUrlFilterTest {
     }
 
     private void assertThatUrlIsNotEncoded(final ResponseAction action)
-            throws IOException, ServletException {
+        throws IOException, ServletException {
         filter.doFilter(request, response, new FilterChain() {
             @Override
             public void doFilter(ServletRequest request, ServletResponse response)
-                    throws IOException, ServletException {
+                throws IOException, ServletException {
                 String url = action.callMethodOfResponse((HttpServletResponse) response);
                 assertThat(url, is(equalTo("not encoded url")));
             }

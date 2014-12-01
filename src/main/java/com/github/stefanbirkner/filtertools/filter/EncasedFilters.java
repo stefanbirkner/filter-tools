@@ -76,9 +76,9 @@ public class EncasedFilters implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
                          final FilterChain filterChain)
-            throws IOException, ServletException {
+        throws IOException, ServletException {
         FilterChain secondFilterWithFilterChain = new FilterWithFilterChain(
-                secondFilter, filterChain);
+            secondFilter, filterChain);
         firstFilter.doFilter(request, response, secondFilterWithFilterChain);
     }
 

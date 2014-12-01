@@ -20,7 +20,7 @@ public class NotAnHttpServletResponseException extends ServletException {
      */
     public NotAnHttpServletResponseException(ServletResponse response) {
         super("The response " + response + " is not a javax.servlet.http.HttpServletResponse, but a "
-                + response.getClass().getName() + ".");
+            + response.getClass().getName() + ".");
         this.response = response;
     }
 

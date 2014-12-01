@@ -41,7 +41,7 @@ public abstract class HttpFilter implements Filter {
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
-            throws IOException, ServletException {
+        throws IOException, ServletException {
         if (!(request instanceof HttpServletRequest))
             throw new NotAnHttpServletRequestException(request);
         if (!(response instanceof HttpServletResponse))
@@ -61,7 +61,7 @@ public abstract class HttpFilter implements Filter {
      * @throws ServletException if an exception has occurred that interferes with the filter's normal operation
      */
     protected abstract void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws IOException, ServletException;
+        throws IOException, ServletException;
 
     /**
      * Does nothing. Can be overridden.

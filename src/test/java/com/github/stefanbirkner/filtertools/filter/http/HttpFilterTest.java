@@ -77,7 +77,7 @@ public class HttpFilterTest {
 
         @Override
         protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-                throws IOException, ServletException {
+            throws IOException, ServletException {
 
             this.request = request;
             this.response = response;

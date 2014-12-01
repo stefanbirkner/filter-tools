@@ -20,7 +20,7 @@ public class NotAnHttpServletRequestException extends ServletException {
      */
     public NotAnHttpServletRequestException(ServletRequest request) {
         super("The request " + request + " is not a javax.servlet.http.HttpServletRequest, but a "
-                + request.getClass().getName() + ".");
+            + request.getClass().getName() + ".");
         this.request = request;
     }
 
