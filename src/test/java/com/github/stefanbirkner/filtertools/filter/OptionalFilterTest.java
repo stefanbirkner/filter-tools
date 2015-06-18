@@ -1,14 +1,18 @@
 package com.github.stefanbirkner.filtertools.filter;
 
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.rules.ExpectedException.none;
 import static org.mockito.Mockito.*;
 
@@ -90,5 +94,22 @@ public class OptionalFilterTest {
         thrown.expect(NullPointerException.class);
         thrown.expectMessage("The matcher is missing.");
         new OptionalFilter((Matcher) null, baseFilter);
+    }
+
+    @Test
+    public void canBeCreatedWithHttpServletRequestPredicate() {
+        Predicate<HttpServletRequest> httpServletRequestPredicate = new Predicate<HttpServletRequest>() {
+            @Override
+            public boolean test(HttpServletRequest object) {
+                return false;
+            }
+        };
+        new OptionalFilter(httpServletRequestPredicate, baseFilter);
+    }
+
+    @Test
+    public void canBeCreatedWithHttpServletRequestMatcher() {
+        Matcher<HttpServletRequest> httpServletRequestPredicate = notNullValue(HttpServletRequest.class);
+        new OptionalFilter(httpServletRequestPredicate, baseFilter);
     }
 }

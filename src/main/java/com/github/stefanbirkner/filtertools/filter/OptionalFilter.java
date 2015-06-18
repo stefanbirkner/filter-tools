@@ -56,10 +56,10 @@ import java.io.IOException;
  * </pre>
  */
 public class OptionalFilter implements Filter {
-    private final Predicate<? super ServletRequest> predicate;
+    private final Predicate<? extends ServletRequest> predicate;
     private final Filter baseFilter;
 
-    public OptionalFilter(Predicate<? super ServletRequest> predicate, Filter baseFilter) {
+    public OptionalFilter(Predicate<? extends ServletRequest> predicate, Filter baseFilter) {
         if (predicate == null)
             throw new NullPointerException("The predicate is missing.");
         this.predicate = predicate;
@@ -68,12 +68,12 @@ public class OptionalFilter implements Filter {
         this.baseFilter = baseFilter;
     }
 
-    public OptionalFilter(Matcher<? super ServletRequest> matcher, Filter baseFilter) {
+    public OptionalFilter(Matcher<? extends ServletRequest> matcher, Filter baseFilter) {
         this(createPredicateForMatcher(matcher), baseFilter);
     }
 
     private static Predicate<ServletRequest> createPredicateForMatcher(
-        final Matcher<? super ServletRequest> matcher) {
+        final Matcher<? extends ServletRequest> matcher) {
         if (matcher == null)
             throw new NullPointerException("The matcher is missing.");
         return new Predicate<ServletRequest>() {
